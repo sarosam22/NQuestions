@@ -28,4 +28,8 @@ addQuestion(question:IQuestion){
     }
     )
 }
+
+getQuestions(){
+    return this.firestore.collection("Questions").snapshotChanges();
+}
 }

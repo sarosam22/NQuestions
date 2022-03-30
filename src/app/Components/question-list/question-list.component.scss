@@ -1,0 +1,24 @@
+.question-card-container {
+    margin: 20px;
+}
+
+.question-card {
+    max-width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;;
+}
+
+.question-text {
+    min-width: 90%;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.question-response {
+    min-width: 10%;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}

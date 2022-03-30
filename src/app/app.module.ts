@@ -13,10 +13,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CRUDService } from './Services/services';
 import { ShowPlayersComponent } from './Components/show-players/show-players.component';
 import { QuestionBarComponent } from './Components/question-bar/question-bar.component';
+import { GetQuestionAnswerComponent } from './Components/get-question-answer/get-question-answer.component';
+import { QuestionListComponent } from './Components/question-list/question-list.component';
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import { QuestionBarComponent } from './Components/question-bar/question-bar.com
     InputPlayersComponent,
     LandingComponent,
     ShowPlayersComponent,
-    QuestionBarComponent
+    QuestionBarComponent,
+    GetQuestionAnswerComponent,
+    QuestionListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +41,7 @@ import { QuestionBarComponent } from './Components/question-bar/question-bar.com
     MatCardModule,
     MatIconModule,
     MatInputModule,
+    MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],

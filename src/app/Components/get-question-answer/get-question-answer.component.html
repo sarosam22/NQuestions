@@ -1,0 +1,7 @@
+<span class="get-question-card-container" *ngIf="question">
+    <mat-card class="get-question-card">      
+        <mat-card-title>{{ question.question }}</mat-card-title>
+      </mat-card>
+      <button mat-button color="primary" (click)="addQuestionAnswer('Yes')">Yes</button>
+      <button mat-button color="warn" (click)="addQuestionAnswer('No')">No</button>
+</span>
