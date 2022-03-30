@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
-import { IPlayer } from "../Models/player";
+import { IPlayer, IQuestion } from "../Models/interfaces";
 
 @Injectable()
 export class CRUDService{
@@ -17,5 +17,15 @@ export class CRUDService{
 
 getPlayers(){
     return this.firestore.collection("Players").snapshotChanges()
+}
+
+
+addQuestion(question:IQuestion){
+    return new Promise<any>((resolve, reject) => {
+        this.firestore.collection("Questions")
+        .add(question)
+        .then(res => {}, err => reject(err))
+    }
+    )
 }
 }
