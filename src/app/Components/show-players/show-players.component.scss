@@ -1,0 +1,12 @@
+@mixin random-bgr(){
+    background-color: rgb(random(255), random(255), random(255));
+}
+.player-card-container {
+    margin: 20px;
+}
+
+.player-card {
+    max-width: 100px;
+    display: inline-block;
+    @include random-bgr()
+}
