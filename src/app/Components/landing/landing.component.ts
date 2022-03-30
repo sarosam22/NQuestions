@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { IPlayer } from 'src/app/Models/player';
+import { IPlayer } from 'src/app/Models/interfaces';
 import { CRUDService } from 'src/app/Services/services';
 import { InputPlayersComponent } from '../input-players/input-players.component';
 
