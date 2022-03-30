@@ -1,0 +1,15 @@
+<div class="question-card-container" *ngFor="let question of questions">
+    <div>
+        <mat-card class="question-card">      
+            <div class="question-text">
+                <mat-card-title >{{ question.payload.doc.data().body}}</mat-card-title>
+            </div>
+    <div class="question-response" 
+    [ngStyle]="{'background-color':question.payload.doc.data().response == 'Yes' ? 'green' : 'red' }">
+        <mat-card-title>{{ question.payload.doc.data().response}}</mat-card-title>
+    </div>
+            
+          </mat-card>
+    </div>
+    
+    </div>

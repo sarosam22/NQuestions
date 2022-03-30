@@ -5,4 +5,6 @@ export interface IPlayer {
 
 export interface IQuestion {
     body: string 
+    response?: string
+    askedBy?: string
 }

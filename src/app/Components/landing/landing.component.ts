@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { IPlayer } from 'src/app/Models/interfaces';
+import { ChildActivationStart } from '@angular/router';
+import { IPlayer, IQuestion } from 'src/app/Models/interfaces';
 import { CRUDService } from 'src/app/Services/services';
 import { InputPlayersComponent } from '../input-players/input-players.component';
 
@@ -14,6 +15,8 @@ export class LandingComponent implements OnInit {
   constructor(public dialog: MatDialog, private service: CRUDService) { }
 
   public players: any
+  public question: any
+  public questions: any
 
   ngOnInit(): void {
     const dialogRef = this.dialog.open(InputPlayersComponent);
@@ -28,6 +31,7 @@ export class LandingComponent implements OnInit {
     })
 
     this.getPlayers()
+    this.getQuestions()
   }
 
   getPlayers() {
@@ -35,6 +39,19 @@ export class LandingComponent implements OnInit {
         this.players = res
     })
 
+  }
+
+  getQuestions(){
+    this.service.getQuestions().subscribe(res => {
+      //these are all questions
+      this.questions = res
+      console.log(this.questions)
+    })
+  }
+
+  catchQuestion(data:any){
+    //this is current question being asked
+    this.question = data
   }
 
 }

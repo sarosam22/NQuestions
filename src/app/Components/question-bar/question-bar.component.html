@@ -1,7 +1,7 @@
 <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Type your question here</mat-label>
-      <input matInput placeholder="Ex. Pizza" />
+      <input matInput placeholder="Ex. Pizza" [formControl]="question"/>
     </mat-form-field>
-    <mat-icon  aria-hidden="false" class="submit-question" aria-label="Example home icon">home</mat-icon>
+    <mat-icon  aria-hidden="false" class="submit-question" aria-label="Example home icon" (click)="questionSubmitted()">home</mat-icon>
   </form>

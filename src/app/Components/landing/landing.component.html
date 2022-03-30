@@ -3,7 +3,20 @@
 
 
 
+
+    <div>
+        <app-question-list [questions]="questions">
+
+        </app-question-list>
+    </div>
+
+    <div>
+        <app-get-question-answer [question]="question">
+
+        </app-get-question-answer>
+    </div>
+
     <div class="question-bar">
-        <app-question-bar></app-question-bar>
+        <app-question-bar (questionSubmittedEmitter)="catchQuestion($event)"></app-question-bar>
     </div>
 </div>

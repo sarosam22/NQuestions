@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-question-bar',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionBarComponent implements OnInit {
 
+
+  @Output()
+  questionSubmittedEmitter: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() { }
 
+  question = new FormControl()
+
   ngOnInit(): void {
+  }
+
+  questionSubmitted(){
+    if (this.question.value){
+      this.questionSubmittedEmitter.emit({question: this.question.value, askedBy: ''})
+      this.question.reset();
+      this.question.disable();
+    }
+
   }
 
 }
