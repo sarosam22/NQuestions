@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CRUDService } from 'src/app/Services/services';
 
 
 @Component({
@@ -8,9 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputPlayersComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public playerName: string,
+  private service: CRUDService,
+  private dialogRef: MatDialogRef<InputPlayersComponent>) { }
+
+  name = new FormControl()
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    this.dialogRef.close({data: this.name.value})
   }
 
 }
