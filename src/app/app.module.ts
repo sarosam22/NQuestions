@@ -15,11 +15,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule, ActionReducerMap } from "@ngrx/store"
 import { CRUDService } from './Services/services';
 import { ShowPlayersComponent } from './Components/show-players/show-players.component';
 import { QuestionBarComponent } from './Components/question-bar/question-bar.component';
 import { GetQuestionAnswerComponent } from './Components/get-question-answer/get-question-answer.component';
 import { QuestionListComponent } from './Components/question-list/question-list.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppReducer } from './reducers/reducer';
+import { SubmitTopicComponent } from './Components/submit-topic/submit-topic.component';
+import { InfoBarComponent } from './Components/info-bar/info-bar.component';
+
 
 
 @NgModule({
@@ -30,7 +36,9 @@ import { QuestionListComponent } from './Components/question-list/question-list.
     ShowPlayersComponent,
     QuestionBarComponent,
     GetQuestionAnswerComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    SubmitTopicComponent,
+    InfoBarComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +50,12 @@ import { QuestionListComponent } from './Components/question-list/question-list.
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    StoreModule.forRoot({myState: AppReducer}as ActionReducerMap<any,any>),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    StoreDevtoolsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],

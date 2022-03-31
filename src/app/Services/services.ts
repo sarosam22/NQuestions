@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
-import { IPlayer, IQuestion } from "../Models/interfaces";
+import { IAppState, IPlayer, IQuestion } from "../Models/interfaces";
 
 @Injectable()
 export class CRUDService{
@@ -32,4 +32,24 @@ addQuestion(question:IQuestion){
 getQuestions(){
     return this.firestore.collection("Questions").snapshotChanges();
 }
+
+addInitialState(state: IAppState){
+    return new Promise<any>((resolve, reject) => {
+        this.firestore.collection("PlayerState")
+        .doc('playerState')
+        .set(state)
+        .then(res => {}, err => reject(err))
+    }
+    )
+}
+
+getCurrentState(){
+    return this.firestore.collection("PlayerState").snapshotChanges();
+}
+
+updateStateonAskerChange(data: IAppState){
+    return this.firestore.collection("PlayerState").doc('playerState').set({ currentAsker: data.currentAsker}
+        , { merge: true})
+}
+
 }

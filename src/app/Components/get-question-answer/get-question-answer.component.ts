@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CRUDService } from 'src/app/Services/services';
 
 @Component({
@@ -10,6 +10,7 @@ export class GetQuestionAnswerComponent implements OnInit {
 
 
   @Input() question: any
+  @Output("updateAsker") updateAsker: EventEmitter<any> = new EventEmitter();
   constructor(private service: CRUDService) { }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class GetQuestionAnswerComponent implements OnInit {
     this.service.addQuestion({body: this.question.question,askedBy:this.question.askedBy, response: answer})
     .then(res => {
 
+      this.updateAsker.emit();
     })
   }
 
