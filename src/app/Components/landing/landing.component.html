@@ -1,8 +1,9 @@
+
 <div>
     <app-show-players [players]="players"></app-show-players>
+</div>
 
-
-
+<div *ngIf="gameStarted">
 
     <div>
         <app-question-list [questions]="questions">
@@ -16,7 +17,12 @@
         </app-get-question-answer>
     </div>
 
-    <div class="question-bar">
-        <app-question-bar (questionSubmittedEmitter)="catchQuestion($event)"></app-question-bar>
+    <div *ngIf="isCurrentAsker" class="question-bar">
+        <app-question-bar (questionSubmittedEmitter)="catchQuestion($event)" (updateAsker)="updateAsker()"></app-question-bar>
+    </div>
+    <div *ngIf="!isCurrentAsker" class="question-bar">
+        <app-info-bar [asker]="initialState.currentAsker"></app-info-bar>
     </div>
 </div>
+
+<button mat-button color="primary" (click)="startGame()" *ngIf="!gameStarted">Start game</button>

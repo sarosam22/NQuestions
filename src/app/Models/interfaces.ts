@@ -8,3 +8,13 @@ export interface IQuestion {
     response?: string
     askedBy?: string
 }
+
+export interface IAppState {
+    players?: string[]
+    thisPlayer?: string
+    gameStart?: boolean
+    currentInquirer?: string
+    upcomingInquirer?: string
+    currentAsker?: string
+    upcomingAsker?: string
+}

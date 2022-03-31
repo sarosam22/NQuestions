@@ -12,6 +12,8 @@ export class QuestionBarComponent implements OnInit {
   @Output()
   questionSubmittedEmitter: EventEmitter<any> = new EventEmitter<any>();
 
+
+  @Output("updateAsker") updateAsker: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   question = new FormControl()
@@ -23,8 +25,10 @@ export class QuestionBarComponent implements OnInit {
     if (this.question.value){
       this.questionSubmittedEmitter.emit({question: this.question.value, askedBy: ''})
       this.question.reset();
-      this.question.disable();
+      //this.question.disable();
     }
+
+    //this.updateAsker.emit()
 
   }
 
